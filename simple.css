@@ -1,0 +1,33 @@
+body {
+    background-color: lightgreen;
+
+}
+
+p {
+    font-size: 20px;
+    font-family: sans-serif;
+    color:green;
+}
+#container {
+    width: 1000px;
+    height: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+.before {
+    height: 500px;
+    width: 650px;
+    background-size: contain;
+    background: url('giannis.jpg') no-repeat;
+    margin: auto;
+}
+
+.after {
+    text-align: center;
+    height: 500px;
+    width: 650px;
+    background-size: contain;
+    background: url('buxin6.gif') no-repeat;
+    margin: auto;
+}
