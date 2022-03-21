@@ -1,6 +1,4 @@
 let tasks = []
-
-
 function updateTime() {
     chrome.storage.local.get(["timer", "timeOption"], (res) => {
         const time = document.getElementById("time")
