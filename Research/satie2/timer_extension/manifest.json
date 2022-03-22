@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Timer Extension",
+  "version": "1.0.0",
+  "description": "Description",
+
+  "action": {
+    "default_title": "Timer Extension",
+    "default_popup": "popup.html"
+  },
+
+  "options_page": "options.html",
+
+  "permissions": ["storage", "alarms"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
