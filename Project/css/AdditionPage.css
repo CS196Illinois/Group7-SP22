@@ -9,18 +9,27 @@ h1 {
 
 body {
   background-color: #e4e3e6;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Home-icon.svg/1200px-Home-icon.svg.png'), url('https://storage.pixteller.com/designs/designs-images/2019-03-27/05/simple-background-backgrounds-passion-simple-1-5c9b95d2d9f93.png');
+  background-image: url("https://storage.pixteller.com/designs/designs-images/2019-03-27/05/simple-background-backgrounds-passion-simple-1-5c9b95d2d9f93.png");
   background-repeat: no-repeat;
   background-position: left top, center top;
-  background-size: 50px, 800px;
+  background-size: 1080px, 1920px;
+  width: 720px;
+  height: 480px;
+}
+
+#home {
+  width: 50px;
+  height: 50px;
 }
 
 #normal-text {
   text-align: center;
-  color: white
+  color: white;
 }
 
-#title-input, #link-input, #time-input {
+#title-input,
+#link-input,
+#time-input {
   display: flex;
   font-size: 30px;
   font-family: serif;

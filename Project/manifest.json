@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Trackler",
+  "version": "1.0",
+  "description": "Track your activity",
+  "action": {
+    "default_title": "Trackler",
+    "default_popup": "html/home.html"
+  },
+  "permissions": ["storage", "tabs"]
+}
