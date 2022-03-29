@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 480px;
+  width: 720px;
+}
+header {
+  background-color: black;
+  color: aliceblue;
+  text-align: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.button {
+  padding: 5px;
+  transition: all 0.2s ease;
+}
+.button:hover {
+  cursor: pointer;
+  border-radius: 120%;
+  background: rgb(104, 104, 104);
+}
+#account {
+  margin: 25px;
+}
+#game {
+  float: right;
+  margin: 20px;
+}
+#stats {
+  float: right;
+  margin: 25px;
+}
+ul {
+  text-align: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+#add {
+  float: right;
+  margin: 30px;
+  text-align-last: right;
+}
