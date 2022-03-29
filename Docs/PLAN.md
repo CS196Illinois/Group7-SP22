@@ -22,3 +22,8 @@
 
 - Complete basic logic for views.
 - Complete Javascript files for implementing UI functions.
+
+## Week 6
+
+- Complete storage functionality for addition action.
+- Implement blocking functionality of websites.
