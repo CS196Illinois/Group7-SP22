@@ -3,15 +3,7 @@ function homeBtnClick() {
 }
 
 function submitBtnClick() {
-  if (name != "" && link != "" && time != 0) {
-    names.push(name);
-    links.push(link);
-    times.push(time);
-    console.log(names);
-    console.log(links);
-    console.log(times);
-    window.location.href = "../html/home.html";
-  }
+  /* add "add websites to storage" code here */
 }
 
 var name = document.getElementById("title-input");
