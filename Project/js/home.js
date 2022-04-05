@@ -19,24 +19,37 @@ function fill(template, data) {
   return result;
 }
 function loadWebsites() {
-  storage.sync.get("websites", function (items) {
-    if (items.websites !== undefined) {
-      var websites = items.websites;
+  chrome.storage.local.get("title", function (items) {
+    if (items.title !== undefined) {
+      var websites = items.title;
       var list = document.getElementById("list");
       list.innerHTML = "";
 
       for (var index in websites) {
-        var website = websites[index];
-        var checked = website.on ? "checked" : "";
+        var website = websites;
         var element = fill(listElementTemplate, {
-          id: "custom" + index,
-          el: website.url,
+          el: website,
         });
 
         list.innerHTML += element;
       }
 
       attachEvents();
+    }
+  });
+}
+
+function deleteWebsite(e) {
+  var id = this.parentElement.id.replace("site", "");
+
+  chrome.storage.local.get("websites", function (items) {
+    if (items.websites !== undefined) {
+      var newArray = items.websites;
+      newArray.splice(id, 1);
+
+      storage.local.set({ websites: newArray }, function () {
+        loadWebsites();
+      });
     }
   });
 }
@@ -52,9 +65,9 @@ function attachEvents() {
 var addBtn = document.getElementById("add");
 var statsBtn = document.getElementById("stats");
 var gameBtn = document.getElementById("game");
-var storage = chrome.storage;
+
 var listElementTemplate =
-  '<li id="{{ id }}" class="item">' +
+  '<li id ="site">' +
   "{{ el }}" +
   '<button type="delete" class="button-add" id="delete"> <img src="https://www.iconpacks.net/icons/1/free-trash-icon-347-thumb.png" width="20px" height="20px"/></button>' +
   "</li>";
@@ -62,3 +75,5 @@ var listElementTemplate =
 addBtn.addEventListener("click", addBtnClick);
 statsBtn.addEventListener("click", statsBtnClick);
 gameBtn.addEventListener("click", gameBtnClick);
+
+loadWebsites();
