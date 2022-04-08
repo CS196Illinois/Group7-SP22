@@ -1,61 +1,65 @@
 function homeBtnClick() {
   window.location.href = "../html/home.html";
-  loadWebsites();
 }
 
 function submitBtnClick() {
-  /* add "add websites to storage" code here */
   document.getElementById("add-time").onclick = function () {
     value1 = document.getElementById("title-input").value;
-    chrome.storage.local.set({ title: value1 }, function () {
-      console.log("Title is " + value1);
-    });
+    value2 = document.getElementById("time-input").value;
+    value3 = document.getElementById("link-input").value;
 
-    value3 = document.getElementById("time-input").value;
-    chrome.storage.local.set({ time: value3 }, function () {
-      console.log("Time is " + value3);
-    });
+    var site = [{ title: value1, time: value2, link: value3 }];
 
-    value2 = document.getElementById("link-input").value;
-    chrome.storage.local.set({ link: value2 }, function () {
-      console.log("Link is " + value2);
+    //values are stored in a site object with fields title, time, and value;
+    //site is stored in chrome.storage.local using the key "websites"
+    //item in websites is an array of site objects
+    chrome.storage.local.set({ website: site }, function () {
+      console.log("Site set");
     });
 
     chrome.storage.local.get("websites", function (items) {
       if (items !== undefined) {
         var array = items.websites;
+        console.log(array);
 
-        array.push({ value1 });
+        array.push(site[0]);
 
         chrome.storage.local.set({ websites: array }, function () {
           loadWebsites();
         });
 
-        input.value = "";
+        site.value = [];
       }
     });
-
-    /*  chrome.storage.local.get(["websites"], function(items) {
-        webpages = webpages.concat(items.websites);
-        if(typeof callback === "function") {
-          callback(webpages);
-        }
-    });
-    console.log(webpages); */
-    alert("saved");
-    loadWebsites();
+    window.location.href = "../html/home.html";
   };
+}
+
+function loadWebsites(callback) {
+  var sites;
+
+  chrome.storage.local.get("websites", function (items) {
+    if (items.websites === undefined) {
+      chrome.storage.local.set({ websites: [] });
+    } else {
+      sites = items.websites;
+    }
+
+    //Call the callback and pass the resulting array
+    if (typeof callback === "function") {
+      callback(sites);
+      console.log(callback(sites));
+    }
+  });
 }
 
 var name = document.getElementById("title-input");
 var link = document.getElementById("link-input");
 var time = document.getElementById("time-input");
 
-var websites = [];
 var value1;
 var value2;
 var value3;
-var site = { title: "", time: 0, link: "" };
 
 var homeBtn = document.getElementById("home");
 var submitBtn = document.getElementById("add-time");
