@@ -19,18 +19,17 @@ function fill(template, data) {
   return result;
 }
 function loadWebsites() {
-  chrome.storage.local.get("title", function (items) {
-    if (items.title !== undefined) {
-      var websites = items.title;
+  chrome.storage.local.get("websites", function (items) {
+    if (items.websites !== undefined) {
+      var arr = items.websites;
       var list = document.getElementById("list");
       list.innerHTML = "";
 
-      for (var index in websites) {
-        var website = websites;
+      for (var index in arr) {
+        var website = arr[index];
         var element = fill(listElementTemplate, {
-          el: website,
+          el: website.title,
         });
-
         list.innerHTML += element;
       }
 
@@ -40,14 +39,15 @@ function loadWebsites() {
 }
 
 function deleteWebsite(e) {
-  var id = this.parentElement.id.replace("site", "");
+  console.log("delete");
+  var id = this.parentElement.id.replace("website", "");
 
   chrome.storage.local.get("websites", function (items) {
     if (items.websites !== undefined) {
       var newArray = items.websites;
       newArray.splice(id, 1);
 
-      storage.local.set({ websites: newArray }, function () {
+      chrome.storage.local.set({ websites: newArray }, function () {
         loadWebsites();
       });
     }
@@ -57,14 +57,18 @@ function deleteWebsite(e) {
 function attachEvents() {
   var del = document.getElementById("delete");
 
-  for (var i = 1; i < del.length; i++) {
-    del.item(i).addEventListener("click", deleteCustomWebsite);
-  }
+  del.addEventListener("click", deleteWebsite);
 }
 
 var addBtn = document.getElementById("add");
 var statsBtn = document.getElementById("stats");
 var gameBtn = document.getElementById("game");
+var storage = chrome.storage;
+var listElementTemplate =
+  '<li id="{{ id }}" class="item">' +
+  "{{ el }}" +
+  '<button type="delete" class="button-add" id="delete"> <img src="https://www.iconpacks.net/icons/1/free-trash-icon-347-thumb.png" width="20px" height="20px"/></button>' +
+  "</li>";
 
 var listElementTemplate =
   '<li id ="site">' +
