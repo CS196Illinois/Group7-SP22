@@ -30,7 +30,6 @@ function loadWebsites() {
         var element = fill(listElementTemplate, {
           el: website.title,
         });
-
         list.innerHTML += element;
       }
 
@@ -64,6 +63,12 @@ function attachEvents() {
 var addBtn = document.getElementById("add");
 var statsBtn = document.getElementById("stats");
 var gameBtn = document.getElementById("game");
+var storage = chrome.storage;
+var listElementTemplate =
+  '<li id="{{ id }}" class="item">' +
+  "{{ el }}" +
+  '<button type="delete" class="button-add" id="delete"> <img src="https://www.iconpacks.net/icons/1/free-trash-icon-347-thumb.png" width="20px" height="20px"/></button>' +
+  "</li>";
 
 var listElementTemplate =
   '<li id ="site">' +
