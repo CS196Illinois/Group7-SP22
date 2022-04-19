@@ -2,48 +2,64 @@ function homeBtnClick() {
   window.location.href = "../html/home.html";
 }
 
-var value1;
-var value2;
-var value3;
-var webpages;
-
-function submitBtnClick(callback) {
-
-  document.getElementById("add-time").onclick = function() {
-
+function submitBtnClick() {
+  document.getElementById("add-time").onclick = function () {
     value1 = document.getElementById("title-input").value;
-    chrome.storage.sync.set({'title': value1}, function() {
-      console.log("Title is " + value1)
+    value2 = document.getElementById("time-input").value;
+    value3 = document.getElementById("link-input").value;
+
+    var site = [{ title: value1, time: value2, link: value3 }];
+
+    //values are stored in a site object with fields title, time, and value;
+    //site is stored in chrome.storage.local using the key "websites"
+    //item in websites is an array of site objects
+    chrome.storage.local.set({ website: site }, function () {
+      console.log("Site set");
     });
 
-    value3 = document.getElementById("time-input").value;
-    chrome.storage.sync.set({'time': value3}, function() {
-      console.log("Time is " + value3)
-    });
+    chrome.storage.local.get("websites", function (items) {
+      if (items !== undefined) {
+        var array = items.websites;
+        console.log(array);
 
-    value2 = document.getElementById("link-input").value;
-    chrome.storage.sync.set({'websites': value2}, function() {
-      console.log("Link is " + value2)
-    });
+        array.push(site[0]);
 
-  /*  chrome.storage.sync.get(["websites"], function(items) {
-        webpages = webpages.concat(items.websites);
-        if(typeof callback === "function") {
-          callback(webpages);
-        }
+        chrome.storage.local.set({ websites: array }, function () {
+          loadWebsites();
+        });
+
+        site.value = [];
+      }
     });
-    console.log(webpages); */
-    alert("saved");
-  }
+    window.location.href = "../html/home.html";
+  };
+}
+
+function loadWebsites(callback) {
+  var sites;
+
+  chrome.storage.local.get("websites", function (items) {
+    if (items.websites === undefined) {
+      chrome.storage.local.set({ websites: [] });
+    } else {
+      sites = items.websites;
+    }
+
+    //Call the callback and pass the resulting array
+    if (typeof callback === "function") {
+      callback(sites);
+      console.log(callback(sites));
+    }
+  });
 }
 
 var name = document.getElementById("title-input");
 var link = document.getElementById("link-input");
 var time = document.getElementById("time-input");
 
-var names = [];
-var links = [];
-var times = [];
+var value1;
+var value2;
+var value3;
 
 var homeBtn = document.getElementById("home");
 var submitBtn = document.getElementById("add-time");

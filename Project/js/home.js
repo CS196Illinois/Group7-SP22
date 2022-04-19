@@ -19,20 +19,17 @@ function fill(template, data) {
   return result;
 }
 function loadWebsites() {
-  storage.sync.get("websites", function (items) {
+  chrome.storage.local.get("websites", function (items) {
     if (items.websites !== undefined) {
-      var websites = items.websites;
+      var arr = items.websites;
       var list = document.getElementById("list");
       list.innerHTML = "";
 
-      for (var index in websites) {
-        var website = websites[index];
-        var checked = website.on ? "checked" : "";
+      for (var index in arr) {
+        var website = arr[index];
         var element = fill(listElementTemplate, {
-          id: "custom" + index,
-          el: website.url,
+          el: website.title,
         });
-
         list.innerHTML += element;
       }
 
@@ -41,12 +38,26 @@ function loadWebsites() {
   });
 }
 
+function deleteWebsite(e) {
+  console.log("delete");
+  var id = this.parentElement.id.replace("website", "");
+
+  chrome.storage.local.get("websites", function (items) {
+    if (items.websites !== undefined) {
+      var newArray = items.websites;
+      newArray.splice(id, 1);
+
+      chrome.storage.local.set({ websites: newArray }, function () {
+        loadWebsites();
+      });
+    }
+  });
+}
+
 function attachEvents() {
   var del = document.getElementById("delete");
 
-  for (var i = 1; i < del.length; i++) {
-    del.item(i).addEventListener("click", deleteCustomWebsite);
-  }
+  del.addEventListener("click", deleteWebsite);
 }
 
 var addBtn = document.getElementById("add");
@@ -59,6 +70,14 @@ var listElementTemplate =
   '<button type="delete" class="button-add" id="delete"> <img src="https://www.iconpacks.net/icons/1/free-trash-icon-347-thumb.png" width="20px" height="20px"/></button>' +
   "</li>";
 
+var listElementTemplate =
+  '<li id ="site">' +
+  "{{ el }}" +
+  '<button type="delete" class="button-add" id="delete"> <img src="https://www.iconpacks.net/icons/1/free-trash-icon-347-thumb.png" width="20px" height="20px"/></button>' +
+  "</li>";
+
 addBtn.addEventListener("click", addBtnClick);
 statsBtn.addEventListener("click", statsBtnClick);
 gameBtn.addEventListener("click", gameBtnClick);
+
+loadWebsites();
