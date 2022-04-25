@@ -12,5 +12,9 @@
     "default_title": "Trackler",
     "default_popup": "html/home.html"
   },
-  "permissions": ["storage", "tabs"]
+  "permissions": ["storage", "tabs"],
+  "background": {
+    "service_worker": "js/background.js"
+  }
+
 }
