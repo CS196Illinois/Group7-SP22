@@ -1,27 +1,38 @@
 (function(){
 
+    console.log("In background.js");
+
     function loadWebsites(callback) {
-        var sites;
+        var websites;
       
         chrome.storage.local.get("defaultWebsites", "ourWebsites", function (items) {
-          if (items.defaultWebsites === undefined) {
-              websites = 
+
+            websites = 
               [
                   {"url" : "youtube.com", "on" : true}
               ];
 
-            chrome.storage.local.set({ "defaultWebsites" : websites});
-          } 
-          else {
-            websites = items.defaultWebsites;
-          }
-          if (item.ourWebsites === undefined){
-              chrome.storage.local.set({"ourWebsites": []});
-          }
-          else {
-              websites = websites.concat(items.ourWebsites);
-          }
-      
+        //   if (items.defaultWebsites === undefined) {
+        //       websites = 
+        //       [
+        //           {"url" : "youtube.com", "on" : true}
+        //       ];
+
+        //     chrome.storage.local.set({ "defaultWebsites" : websites});
+        //   } 
+        //   else {
+        //     websites = items.defaultWebsites;
+        //   }
+          
+        chrome.storage.local.set({"ourWebsites": ["www.youtube.com"]});
+        {
+        //   if (item.ourWebsites === undefined){
+        //       chrome.storage.local.set({"ourWebsites": []});
+        //   }
+        //   else {
+        //       websites = websites.concat(items.ourWebsites);
+        //   }
+        }
           //Call the callback and pass the resulting array
           if (typeof callback === "function") {
             callback(websites);
@@ -31,6 +42,7 @@
     }
 
     function checkURL(url, words) {
+        {
         // var result = false;
     
         // for (var x in words) {
@@ -40,6 +52,7 @@
         // }
         // }
         // usually we would return result
+    }
         return true;
     }
     
@@ -48,7 +61,7 @@
         if (item.on === true) {
     
             loadWebsites(function(sites){
-                // details.frameId === 0 && checkURL(details.url, websites
+                // details.frameId === 0 && checkURL(details.url, websites)
             if (true){
                 var id = details.tabId;
                 
