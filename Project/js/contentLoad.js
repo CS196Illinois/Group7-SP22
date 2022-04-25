@@ -5,6 +5,3 @@ chrome.tabs.onCreated.addListener(function (tabId, changeInfo, tab) {
   
     }
   })
-
-
-
