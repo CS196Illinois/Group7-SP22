@@ -18,6 +18,7 @@ function fill(template, data) {
 
   return result;
 }
+
 function loadWebsites() {
   chrome.storage.local.get("websites", function (items) {
     if (items.websites !== undefined) {
@@ -79,5 +80,4 @@ var listElementTemplate =
 addBtn.addEventListener("click", addBtnClick);
 statsBtn.addEventListener("click", statsBtnClick);
 gameBtn.addEventListener("click", gameBtnClick);
-
 loadWebsites();
