@@ -9,14 +9,20 @@ function submitBtnClick() {
     value3 = document.getElementById("link-input").value;
 
     var site = [{ title: value1, time: value2, link: value3 }];
-
+    const notificationTime = value2
+    const name = value1
     //values are stored in a site object with fields title, time, and value;
     //site is stored in chrome.storage.local using the key "websites"
     //item in websites is an array of site objects
-    chrome.storage.local.set({ website: site }, function () {
-      console.log("Site set");
+    chrome.storage.local.set({
+      isRunning: true
+    })
+    chrome.storage.local.set({ website: site, notificationTime, name, }, function () {
+      console.log("Site and time set");
     });
-
+    chrome.storage.local.get(["notificationTime"], (res) => {
+      time = res.notificationTime ?? 0
+    })
     chrome.storage.local.get("websites", function (items) {
       if (items !== undefined) {
         var array = items.websites;
@@ -67,7 +73,7 @@ var submitBtn = document.getElementById("add-time");
 homeBtn.addEventListener("click", homeBtnClick);
 submitBtn.addEventListener("click", submitBtnClick);
 
-//start of blocker function 
+//start of blocker function
 function checkURL(url, word) {
   var result = false;
 
@@ -87,7 +93,7 @@ function blockURL(details) {
       loadWebsites(function (websites){
         if (details.frameId === 0 && checkURL(details.url, websites)){
           var id = details.tabId;
-          
+
           chrome.tabs.update(id, {"url": "html/message/html"});
 
           storage.local.get("blocked", function(item){

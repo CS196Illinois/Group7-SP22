@@ -12,5 +12,8 @@
     "default_title": "Trackler",
     "default_popup": "html/home.html"
   },
-  "permissions": ["storage", "tabs", "webNavigation"]
+  "permissions": ["storage", "tabs", "webNavigation", "alarms", "notifications"],
+  "background": {
+    "service_worker": "timer_background.js"
+  }
 }
