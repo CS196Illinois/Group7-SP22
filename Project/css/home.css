@@ -44,3 +44,8 @@ ul {
   margin: 30px;
   text-align-last: right;
 }
+h1 {
+  font-family: Tahoma, Verdana, sans-serif;
+  padding: 5px;
+  font-style: underline;
+}

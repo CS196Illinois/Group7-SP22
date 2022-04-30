@@ -24,7 +24,7 @@ function loadWebsites() {
     if (items.websites !== undefined) {
       var arr = items.websites;
       var list = document.getElementById("list");
-      list.innerHTML = "";
+      list.innerHTML = "<h1> Blocked Websites: </h1>";
 
       for (var index in arr) {
         var website = arr[index];
