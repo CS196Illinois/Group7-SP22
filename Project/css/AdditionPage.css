@@ -1,15 +1,19 @@
 h1 {
-  color: gray;
+  padding: 15px 30px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f2d830;
+  color: rgb(107, 107, 107);
   text-align: center;
-  font-style: oblique;
   font-family: sans-serif;
   font-weight: 500;
   font-size: 50px;
+  border-radius: 5%;
+  width: 60%;
 }
 
 body {
-  background-color: #e4e3e6;
-  background-image: url("https://storage.pixteller.com/designs/designs-images/2019-03-27/05/simple-background-backgrounds-passion-simple-1-5c9b95d2d9f93.png");
+  background-color: white;
   background-repeat: no-repeat;
   background-position: left top, center top;
   background-size: 1080px, 1920px;
@@ -32,12 +36,12 @@ body {
 #time-input {
   display: flex;
   font-size: 30px;
-  font-family: serif;
+  font-family: tahoma, verdana, segoe, sans-serif;
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 40%;
-  border: 1px solid #b90ff2;
+  border: 1px solid #f2d830;
   opacity: 0.7;
 }
 
@@ -46,10 +50,10 @@ body {
   margin: 10px 4px;
   color: black;
   background-color: white;
-  font-family: sans-serif;
+  font-family: tahoma;
   font-size: 30px;
-  text-align: center;
-  border: 2px solid #b90ff2;
+  text-align: left;
+  border: 2px solid #ffeb6a;
   transition-duration: 0.5s;
   cursor: pointer;
   display: block;
@@ -57,13 +61,15 @@ body {
   margin-right: auto;
   width: 20%;
   opacity: 0.7;
+  border-radius: 10%;
 }
 #add-time:hover {
-  background-color: #b90ff2;
+  background-color: #ffeb6a;
   color: white;
   opacity: 1;
 }
 .button {
+  border-radius: 20%;
   padding: 5px;
   transition: all 0.2s ease;
 }

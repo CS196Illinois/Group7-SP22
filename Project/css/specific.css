@@ -1,5 +1,5 @@
 body {
-  background-color: indianred;
+  background-color: rgb(105, 187, 72);
   height: 400px;
   width: 350px;
 }
@@ -10,12 +10,16 @@ h1 {
   font-size: 25px;
   margin: 10px;
   font-weight: normal;
+  font-family: tahoma;
+  background-color: rgb(46, 46, 46);
+  border-radius: 4px;
 }
 
 h2 {
   font-weight: normal;
   font-size: 20px;
   color: whitesmoke;
+  font-family: tahoma;
 }
 
 #ps {
@@ -24,4 +28,5 @@ h2 {
   font-size: 15px;
   margin: 10px;
   font-weight: normal;
+  font-family: tahoma;
 }
