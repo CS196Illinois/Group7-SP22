@@ -6,6 +6,7 @@
 body {
   height: 480px;
   width: 720px;
+  color: black;
 }
 .real{
   width: 100%;
@@ -40,8 +41,7 @@ body {
   margin-right: auto;
 }
 header {
-  background-color: black;
-  color: aliceblue;
+  background-color: #FFFC9E;
   text-align: center;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;

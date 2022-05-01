@@ -1,11 +1,11 @@
 body {
-  background-color: rgb(105, 187, 72);
+  background-color: rgb(199, 212, 97);
   height: 400px;
   width: 350px;
 }
 
 h1 {
-  color: whitesmoke;
+  color: black;
   text-align: center;
   font-size: 25px;
   margin: 10px;
@@ -23,7 +23,7 @@ h2 {
 }
 
 #ps {
-  color: whitesmoke;
+  color: black;
   text-align: center;
   font-size: 15px;
   margin: 10px;
