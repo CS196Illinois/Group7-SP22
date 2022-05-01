@@ -1,11 +1,11 @@
 body {
-  background-color: indianred;
+  background-color: #A6FF9E;
   height: 400px;
   width: 350px;
 }
 
 h1 {
-  color: whitesmoke;
+  color: black;
   text-align: center;
   font-size: 25px;
   margin: 10px;
@@ -15,11 +15,11 @@ h1 {
 h2 {
   font-weight: normal;
   font-size: 20px;
-  color: whitesmoke;
+  color: black;
 }
 
 #ps {
-  color: whitesmoke;
+  color: black;
   text-align: center;
   font-size: 15px;
   margin: 10px;

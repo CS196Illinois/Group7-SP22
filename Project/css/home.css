@@ -6,10 +6,10 @@
 body {
   height: 480px;
   width: 720px;
+  color: black;
 }
 header {
-  background-color: black;
-  color: aliceblue;
+  background-color: #FFFC9E;
   text-align: center;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
