@@ -7,6 +7,38 @@ body {
   height: 480px;
   width: 720px;
 }
+.real{
+  width: 100%;
+  position: absolute;
+  top: 50%
+  transform: translateY(-50%);
+  text-align: center;
+  color: #0066FF;
+  font-size: 18px;
+  display: inline-block;
+}
+
+#reddit{
+  height: 25px;
+  width: 25px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#youtube{
+  height: 20px;
+  width: 25px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#twitter{
+  height: 20px;
+  width: 25px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 header {
   background-color: black;
   color: aliceblue;
@@ -42,7 +74,7 @@ ul {
 #add {
   float: right;
   margin: 30px;
-  text-align-last: right;
+  margin-top: 100px;
 }
 h1 {
   font-family: Tahoma, Verdana, sans-serif;
